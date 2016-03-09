@@ -8,10 +8,7 @@ ENV PJSIP_VERSION=2.4.5
 ADD ./conf /tmp
 ADD ./scripts /
 
-RUN /bin/sh /build-init.sh
-RUN /bin/sh /build-pjsip.sh
-RUN /bin/sh /build-asterisk.sh
-RUN /bin/sh /build-final.sh
+RUN /bin/sh /build.sh
 
 WORKDIR /etc/asterisk
 CMD ["/bin/sh", "/start.sh"]
