@@ -12,6 +12,7 @@ Includes:
 
 - Asterisk 13.7.2
 - Sip and new pjsip 2.4.5 channel enabled
+- opus, g729 codec
 - Fail2ban (v0.8.11)
 
 To pull it:

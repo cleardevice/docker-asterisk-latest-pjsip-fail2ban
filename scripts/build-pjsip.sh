@@ -8,7 +8,7 @@ tar xjvf pjproject.tar.bz2 -C ./pjproject --strip-components=1
 
 cd pjproject
 
-./configure --libdir=/usr/lib/x86_64-linux-gnu --prefix=/usr --enable-shared
+./configure --libdir=/usr/lib/x86_64-linux-gnu --prefix=/usr --enable-shared CFLAGS='-O2 -DNDEBUG'
 
 make dep && make && make install && ldconfig && ldconfig -p | grep pj
 

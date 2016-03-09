@@ -2,12 +2,33 @@
 
 cd /tmp
 
+# libopus
+wget -O opus.tar.gz http://downloads.xiph.org/releases/opus/opus-1.1.2.tar.gz
+
+mkdir opus
+tar -xzvf opus.tar.gz -C ./opus --strip-components=1
+
+cd opus
+./configure
+make all && make install
+
+# asterisk
+cd /tmp
 wget -O asterisk.tar.gz http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${ASTERISK_VERSION}.tar.gz
 
 mkdir asterisk
 tar -xzvf asterisk.tar.gz -C ./asterisk --strip-components=1
 
+# asterisk-opus patch
+git clone https://github.com/seanbright/asterisk-opus.git
+
 cd ./asterisk
+cp ../asterisk-opus/codecs/* codecs/
+cp ../asterisk-opus/formats/* formats/
+patch -p1 < ../asterisk-opus/asterisk.patch
+
+./bootstrap.sh
+
 sh contrib/scripts/get_mp3_source.sh
 
 # menuselect
@@ -23,7 +44,7 @@ menuselect/menuselect \
 --enable-category MENUSELECT_FORMATS \
 --disable-category MENUSELECT_FUNCS \
 --disable-category MENUSELECT_PBX \
---disable-category MENUSELECT_RES \
+--enable-category MENUSELECT_RES \
 --disable-category MENUSELECT_TESTS \
 --disable-category MENUSELECT_OPTS_app_voicemail \
 --disable-category MENUSELECT_UTILS \
@@ -45,29 +66,15 @@ menuselect/menuselect \
 --enable chan_sip \
 --enable pbx_config \
 --enable pbx_realtime \
---enable res_agi \
---enable res_ari \
---enable res_ari_channels \
---enable res_ari_events \
---enable res_ari_playbacks \
---enable res_ari_recordings \
---enable res_ari_sounds \
---enable res_ari_device_states \
---enable res_realtime \
---enable res_rtp_asterisk \
---enable res_rtp_multicast \
---enable res_stasis \
---enable res_stasis_answer \
---enable res_stasis_device_state \
---enable res_stasis_playback \
---enable res_stasis_recording \
---enable res_stun_monitor \
---enable res_timing_timerfd \
 --enable func_callcompletion \
 --enable func_callerid \
 --disable BUILD_NATIVE
 
-./configure --libdir=/usr/lib/x86_64-linux-gnu
+./configure --with-crypto --with-ssl --with-srtp=/usr/include/srtp/ --libdir=/usr/lib/x86_64-linux-gnu
 make && make install && make samples
+
+# add g729
+wget http://asterisk.hosting.lv/bin/codec_g729-ast130-gcc4-glibc-x86_64-pentium4.so -O codec_g729.so
+mv codec_g729.so /usr/lib/x86_64-linux-gnu/asterisk/modules/
 
 touch /var/log/auth.log /var/log/asterisk/messages /var/log/asterisk/security /var/log/asterisk/cdr-csv
