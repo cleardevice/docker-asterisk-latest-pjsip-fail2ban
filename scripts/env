@@ -1,0 +1,7 @@
+export minimal_apt_get_args='-y --no-install-recommends'
+
+export SERVICE_PACKAGES="nano tar htop curl"
+export LIBS_PACKAGES="libxml2-dev libjansson-dev libncurses5-dev libgsm1-dev libspeex-dev libspeexdsp-dev libssl-dev libsqlite3-dev unixodbc-dev"
+export BUILD_PACKAGES="wget subversion build-essential uuid-dev pkg-config"
+export RUN_PACKAGES="openssl sqlite3 fail2ban iptables"
+
