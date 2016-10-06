@@ -1,9 +1,11 @@
-# Version: 0.0.1 - Asterisk 13.7.2 with pjsip 2.4.5
+# Version: 0.0.2 - Asterisk 14.0.2 with pjsip 2.5.5 + opus,g729 codecs
 FROM ubuntu:trusty
 MAINTAINER cd "cleardevice@gmail.com"
 
-ENV ASTERISK_VERSION=13.7.2
-ENV PJSIP_VERSION=2.4.5
+ENV TERM=xterm
+ENV OPUS_VERSION=1.1.3
+ENV ASTERISK_VERSION=14.0.2
+ENV PJSIP_VERSION=2.5.5
 
 ADD ./conf /tmp
 ADD ./scripts /

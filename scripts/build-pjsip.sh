@@ -8,7 +8,6 @@ tar xjvf pjproject.tar.bz2 -C ./pjproject --strip-components=1
 
 cd pjproject
 
-./configure --libdir=/usr/lib/x86_64-linux-gnu --prefix=/usr --enable-shared CFLAGS='-O2 -DNDEBUG'
+CFLAGS='-DPJ_HAS_IPV6=1 -O2 -DNDEBUG' ./configure --libdir=/usr/lib/x86_64-linux-gnu --prefix=/usr --enable-shared --disable-sound --disable-resample --disable-video --disable-opencore-amr
 
 make dep && make && make install && ldconfig && ldconfig -p | grep pj
-
