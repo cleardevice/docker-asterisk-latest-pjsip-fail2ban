@@ -1,18 +1,19 @@
 # docker-asterisk-latest-pjsip-fail2ban: Docker image
 [![](https://images.microbadger.com/badges/image/cleardevice/docker-asterisk-latest-pjsip-fail2ban.svg)](https://microbadger.com/images/cleardevice/docker-asterisk-latest-pjsip-fail2ban "Get your own image badge on microbadger.com") 
+
 [![](https://images.microbadger.com/badges/version/cleardevice/docker-asterisk-latest-pjsip-fail2ban.svg)](https://microbadger.com/images/cleardevice/docker-asterisk-latest-pjsip-fail2ban "Get your own version badge on microbadger.com")
 
 
 You can find this image on the docker hub at: https://hub.docker.com/r/cleardevice/docker-asterisk-latest-pjsip-fail2ban/
 
-##### Docker image with Certified Asterisk 14 LTS version and Fail2ban on Ubuntu 64bits (14.04.2 LTS)
+##### Docker image with Certified Asterisk 14 LTS version and Fail2ban on Ubuntu 64bits (14.04.5LTS)
 
-This is the Docker latest Asterisk 14.0.2 version on Ubuntu X86_64 with SIP and PJSIP version 2.5.5.
+This is the Docker latest Asterisk 14.04.5 version on Ubuntu X86_64 with SIP and PJSIP version 2.6.
 
 Includes:
 
-- Asterisk 14.0.2
-- Sip and new pjsip 2.5.5 channel enabled
+- Asterisk 14.3
+- Sip and new pjsip 2.6 channel enabled
 - opus, g729 codec
 - Fail2ban (v0.8.11)
 
