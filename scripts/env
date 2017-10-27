@@ -1,7 +1,6 @@
 export minimal_apt_get_args='-y --no-install-recommends'
 
-export SERVICE_PACKAGES="nano tar htop curl"
+export SERVICE_PACKAGES="nano tar htop curl crontab"
 export LIBS_PACKAGES="libxml2-dev libjansson-dev libncurses5-dev libgsm1-dev libspeex-dev libspeexdsp-dev libssl-dev libsqlite3-dev unixodbc-dev libsrtp0-dev libasound2-dev libmysqlclient-dev"
 export BUILD_PACKAGES="wget subversion git ca-certificates build-essential uuid-dev pkg-config autoconf automake gtk2.0 xmlstarlet"
-export RUN_PACKAGES="openssl sqlite3 fail2ban iptables"
-
+export RUN_PACKAGES="openssl sqlite3 fail2ban iptables logrotate"
